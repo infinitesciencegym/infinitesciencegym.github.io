@@ -1,0 +1,22 @@
+{
+  "name": "infinite-science-gym-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "dev": "eleventy --serve --incremental",
+    "build-ghpages": "npx @11ty/eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5"
+  },
+  "dependencies": {
+    "@11ty/eleventy-img": "^6.0.4"
+  }
+}

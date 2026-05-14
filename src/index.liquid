@@ -1,0 +1,195 @@
+---
+layout: layout.html
+title: InfiniteScienceGym
+footer:
+  organization: InfiniteScienceGym
+  year: 2026
+  updated: May 2026
+---
+
+<h2>Model Rankings</h2>
+<p class="section-intro">
+  Click any column header to sort.
+   See the <a href="/about/">About page</a> for evaluation details.
+</p>
+
+<div id="leaderboard-wrap">
+  <table id="leaderboard" class="display">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Model</th>
+        <th>Type</th>
+        <th>Accuracy ↑</th>
+        <th>Unans. Pre. ↑</th>
+        <th>Unans. Rec. ↑</th>
+        <th>Toks. (k) / Q ↓</th>
+        <th>Tool Calls / Q ↓</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- ── Rows — replace with your data ──────────── -->
+      <tr>
+        <td>1</td>
+        <td>
+          <a 
+            class="model-name" 
+            href="https://openai.com/index/introducing-gpt-5-4/" 
+            target="_blank">GPT-5.4</a>
+          <span class="model-org">OpenAI</span>
+        <td>
+          <span class="tag closed">Closed</span>
+        </td>
+        <td class="score-main">44.8</td>
+        <td class="score">82.1</td>
+        <td class="score">82.4</td>
+        <td class="score">24.3</td>
+        <td class="score">7.6</td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>
+          <a 
+            class="model-name" 
+            href="https://www.anthropic.com/news/claude-opus-4-6" 
+            target="_blank">Claude Opus 4.6</a>
+          <span class="model-org">Anthropic</span>
+          {% comment %} <a class="model-link" href="#" target="_blank">paper ↗</a> {% endcomment %}
+        </td>
+        <td>
+          <span class="tag closed">Closed</span>
+        </td>
+        <td class="score-main">35.5</td>
+        <td class="score">80.4</td>
+        <td class="score">82.6</td>
+        <td class="score">61.7</td>
+        <td class="score">7.2</td>
+      </tr>
+
+      <tr>
+        <td>3</td>
+        <td>
+          <a 
+            class="model-name" 
+            href="https://arxiv.org/abs/2508.10925" 
+            target="_blank">GPT-OSS 20B</a>
+          <span class="model-org">OpenAI</span>
+        </td>
+        <td>
+          <span class="tag open">Open</span>
+        </td>
+        <td class="score-main">29.1</td>
+        <td class="score">79.8</td>
+        <td class="score">39.0</td>
+        <td class="score">80.8</td>
+        <td class="score">2.4</td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td>
+          <a 
+            class="model-name" 
+            href="https://arxiv.org/abs/2505.09388" 
+            target="_blank">Qwen3 4B Instruct</a>
+          <span class="model-org">Alibaba</span>
+        </td>
+        <td>
+          <span class="tag open">Open</span>
+        </td>
+        <td class="score-main">24.6</td>
+        <td class="score">79.8</td>
+        <td class="score">32.0</td>
+        <td class="score">34.1</td>
+        <td class="score">1.6</td>
+      </tr>
+
+      <tr>
+        <td>5</td>
+        <td>
+          <a 
+            class="model-name" 
+            href="https://arxiv.org/abs/2505.09388" 
+            target="_blank">Gemma 3 27B it</a>
+          <span class="model-org">Google</span>
+        </td>
+        <td>
+          <span class="tag open">Open</span>
+        </td>
+        <td class="score-main">23.1</td>
+        <td class="score">80.8</td>
+        <td class="score">40.8</td>
+        <td class="score">66.0</td>
+        <td class="score">1.9</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+<!-- /leaderboard-wrap -->
+
+<div class="legend">
+  <div class="legend-justify">
+    <span class="legend-item">
+      <span class="tag open">Open</span>
+      Open weights</span>
+    <span class="legend-item">
+      <span class="tag closed">Closed</span>
+      Proprietary / closed weights</span>
+  {% comment %} <span class="legend-item">
+<span class="tag api">API</span>
+API-only access</span> {% endcomment %}
+  </div>
+  <div class="legend-justify">
+    <span class="legend-item">↑ Higher is better</span>
+    <span class="legend-item">↓ Lower is better</span>
+    {% comment %} <span class="legend-item">— Not reported</span> {% endcomment %}
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('#leaderboard').DataTable({
+      // Default sort: Overall score descending (column index 3)
+      order: [[3, 'desc']],
+
+      // Columns where sorting doesn't make sense
+      columnDefs: [
+        { orderable: false, targets: [0] },   // rank, model, type
+        { type: 'num', targets: [4, 5, 6, 7] },     // score columns → numeric sort
+        { type: 'str', targets: [1, 2]}
+      ],
+
+      // Page length options
+      // lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'All']],
+      // pageLength: 25,
+      paging: false,
+      searching: false,
+      info: false,
+
+      // Layout: put search top-right, length top-left, info/pagination bottom
+      // layout: {
+      //   topStart: 'pageLength',
+      //   topEnd: 'search',
+      //   bottomStart: 'info',
+      //   bottomEnd: 'paging',
+      // },
+
+      // Re-number the rank column after each sort so it always reflects
+      // visual position (optional — remove if you want stable rank numbers)
+      drawCallback: function () {
+        this.api().column(0).nodes().each(function (cell, i) {
+          const medals = ['1', '2', '3'];
+          const classes = ['rank-gold', 'rank-silver', 'rank-bronze'];
+          if (i < 3) {
+            cell.innerHTML = `<span class="${classes[i]}">${medals[i]}</span>`;
+          } else {
+            cell.innerHTML = i + 1;
+          }
+        });
+      },
+    });
+  });
+</script>

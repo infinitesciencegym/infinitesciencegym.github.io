@@ -1,0 +1,215 @@
+---
+layout: layout.html
+title: InfiniteScienceGym
+footer:
+  organization: InfiniteScienceGym
+  year: 2026
+  updated: May 2026
+permalink: /about/
+---
+
+<div class="about-grid">
+
+  <!-- Stats strip ─────────────────────────────── -->
+  {% comment %} <div class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-desc">Task Categories</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">1,200</span>
+      <span class="stat-desc">Test Examples</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">15</span>
+      <span class="stat-desc">Models Evaluated</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">2024</span>
+      <span class="stat-desc">Data Cutoff</span>
+    </div>
+  </div> {% endcomment %}
+
+  <!-- About ───────────────────────────────────── -->
+  <div class="about-section">
+    <p class="section-label">Overview</p>
+    <h2>What is InfiniteScienceGym?</h2>
+    <p>
+      InfiniteScienceGym is a benchmark for evaluating large language models as
+      scientific assistants on repository-grounded empirical data reasoning, 
+      introduced in our paper <em>"InfiniteScienceGym: An Unbounded, 
+        Procedurally-Generated Benchmark for Scientific Analysis"</em>.
+    </p>
+    <p>
+      The benchmark procedurally generates seed-indexed scientific repositories,
+      each with realistic file-system structure, tabular data, and verifiable
+      question-answer tasks. It includes both answerable and unanswerable
+      questions spanning repository metadata, file metadata, directory traversal,
+      univariate statistics, bivariate statistics, and hypothesis testing.
+    </p>
+    <p>
+      Unlike prior benchmarks built only from published studies or fixed datasets,
+      InfiniteScienceGym is generated on demand and comes with exact ground truth
+      by construction. This makes it possible to evaluate evidence-grounded
+      reasoning, abstention, and tool use at effectively unbounded scale, without
+      distributing a large static corpus.
+    </p>
+  </div>
+
+  <!-- Task descriptions ───────────────────────── -->
+  <div class="about-section">
+    {% comment %} <p class="section-label">Evaluation</p>
+    <h2>Task Descriptions</h2>
+    <table class="task-table">
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Task</th>
+          <th>Metric</th>
+          <th>Examples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Task A</td>
+          <td>Description of Task A.</td>
+          <td>F₁</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>Task B</td>
+          <td>Description of Task B.</td>
+          <td>Accuracy</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>Task C</td>
+          <td>Description of Task C.</td>
+          <td>BLEU-4</td>
+          <td>400</td>
+        </tr>
+        <tr>
+          <td>Overall</td>
+          <td>Macro-average across all three tasks.</td>
+          <td>—</td>
+          <td>1,200</td>
+        </tr>
+      </tbody>
+    </table> {% endcomment %}
+
+    <p class="section-label">Submissions</p>
+    <h2>How to Submit</h2>
+    <p>
+      To add a model to the leaderboard, please open a
+      <a href="https://github.com/utahnlp/infinite-science-gym/issues" target="_blank">GitHub issue</a>
+      including the information below, or email us at
+      <a href="mailto:oliver.bentham@utah.edu">oliver.bentham@utah.edu</a>.
+      Self-reported scores are accepted but marked with † until independently
+      verified. We reserve the right to remove entries that cannot be reproduced.
+    </p>
+    <p>
+      Include: model name, organization, access type (open / API),
+      parameter count (if known), a link to the model card or paper, and your
+      reported scores. We may independently verify results before listing.
+    </p>
+
+    <p class="section-label team">Team</p>
+    <h2>Authors</h2>
+    <div class="author-list">
+      {% for author in authors %}
+      <div class="author-card">
+        <strong>{{ author.name }}</strong>
+        <span>{{ author.institution }}</span>
+        &emsp;<a href="{{ author.website }}" target="_blank">website ↗</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% comment %} <hr /> {% endcomment %}
+
+  {% comment %} <!-- Evaluation protocol ─────────────────────── -->
+  <div class="about-section">
+    <p class="section-label">Protocol</p>
+    <h2>Evaluation Protocol</h2>
+    <p>
+      All models are evaluated under <strong>zero-shot</strong> prompting using
+      a standardized prompt template (provided in the repository). Few-shot
+      results may be submitted separately and are marked in the leaderboard.
+    </p>
+    <p>
+      We use [evaluation framework / harness] for reproducibility. Scores
+      represent the mean over [N] random seeds where applicable. Please see
+      <a href="https://github.com/your-org/your-repo" target="_blank">the
+      repository</a> for the exact prompt templates and evaluation scripts.
+    </p>
+  </div> {% endcomment %}
+
+  {% comment %} <!-- Submission ──────────────────────────────── -->
+  <div class="about-section">
+    <p class="section-label">Submissions</p>
+    <h2>How to Submit</h2>
+    <p>
+      To add a model to the leaderboard, please open a
+      <a href="https://github.com/your-org/your-repo/issues" target="_blank">GitHub issue</a>
+      using the <em>Leaderboard Submission</em> template, or email us at
+      <a href="mailto:your@email.edu">your@email.edu</a>.
+    </p>
+    <p>
+      Include: model name, organization, access type (open / closed / API),
+      parameter count (if known), a link to the model card or paper, and your
+      reported scores. We may independently verify results before listing.
+    </p>
+    <p>
+      Self-reported scores are accepted but marked with † until independently
+      verified. We reserve the right to remove entries that cannot be reproduced.
+    </p>
+  </div> {% endcomment %}
+
+  {% comment %} <hr /> {% endcomment %}
+
+  {% comment %} <!-- Authors ─────────────────────────────────── -->
+  <div class="about-section">
+    <p class="section-label">Team</p>
+    <div class="author-list">
+      {% for author in authors %}
+      <div class="author-card">
+        <strong>{{ author.name }}</strong>
+        <span>{{ author.institution }}</span>
+        &emsp;<a href="{{ author.website }}" target="_blank">website ↗</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div> {% endcomment %}
+
+    <!-- ── Citation ─────────────────────────────────── -->
+<div class="about-section full">
+  <p class="section-label">Cite this benchmark</p>
+<div class="citation-box">@misc{bentham2026infinitesciencegym,
+  title={InfiniteScienceGym: An Unbounded, Procedurally-Generated Benchmark for Scientific Analysis}, 
+  author={Oliver Bentham and Vivek Srikumar},
+  year={2026},
+  eprint={2604.13201},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2604.13201}, 
+}</div>
+</div>
+
+  <!-- Update log ──────────────────────────────── -->
+  {% comment %} <div class="about-section full">
+    <p class="section-label">Changelog</p>
+    <h2>Update Log</h2>
+    <ul class="update-log">
+      {% for entry in changelog %}
+      <li>
+        <span class="log-date">{{ entry.date }}</span>
+        <span>{{ entry.description }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </div> {% endcomment %}
+
+
+
+</div><!-- /about-grid -->
