@@ -1,0 +1,50 @@
+---
+layout: layout.html
+title: InfiniteScienceGym
+footer:
+  organization: InfiniteScienceGym
+  year: 2026
+  updated: May 2026
+permalink: /background/
+---
+
+<div class="about-grid">
+  <div class="about-section full">
+    <p class="section-label">Overview</p>
+    <h2>What is InfiniteScienceGym?</h2>
+    <p>
+      InfiniteScienceGym (ISG) is a benchmark for evaluating large language models as
+      scientific assistants on repository-grounded empirical data reasoning, 
+      introduced in our paper <a href="https://arxiv.org/abs/2604.13201" target="_blank"><em>"InfiniteScienceGym: An Unbounded, 
+      Procedurally-Generated Benchmark for Scientific Analysis"</em></a>.
+    </p>
+    <p>
+      The benchmark procedurally generates seed-indexed scientific repositories,
+      each with realistic file-system structure, tabular data, and verifiable
+      question-answer tasks. It includes both answerable and unanswerable
+      questions spanning repository metadata, file metadata, directory traversal,
+      univariate statistics, bivariate statistics, and hypothesis testing.
+    </p>
+    <p>
+      Unlike prior benchmarks built only from published studies or fixed datasets,
+      InfiniteScienceGym is generated on demand and comes with exact ground truth
+      by construction. This makes it possible to evaluate evidence-grounded
+      reasoning, abstention, and tool use at effectively unbounded scale, without
+      distributing a large static corpus.
+    </p>
+  </div>
+
+  <!-- ── Citation ─────────────────────────────────── -->
+  <div class="about-section full">
+    <p class="section-label">Cite this benchmark</p>
+  <div class="citation-box">@misc{bentham2026infinitesciencegym,
+  title={InfiniteScienceGym: An Unbounded, Procedurally-Generated Benchmark for Scientific Analysis}, 
+  author={Oliver Bentham and Vivek Srikumar},
+  year={2026},
+  eprint={2604.13201},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2604.13201}, 
+}</div>
+
+</div>
