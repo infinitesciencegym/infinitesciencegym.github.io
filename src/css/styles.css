@@ -395,73 +395,8 @@ hr {
   grid-column: 1 / -1;
 }
 
-/* ── Metrics / stats strip ───────────────────────── */
-.stats-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-  border: 1px solid var(--rule);
-  background: #fff;
-  margin-bottom: 2.8rem;
-  grid-column: 1 / -1;
-}
-.stat-item {
-  flex: 1;
-  min-width: 140px;
-  padding: 1.2rem 1.5rem;
-  border-right: 1px solid var(--rule);
-}
-.stat-item:last-child { border-right: none; }
-.stat-num {
-  font-family: var(--display);
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--accent);
-  line-height: 1;
-  display: block;
-}
-.stat-desc {
-  font-family: var(--mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  display: block;
-  margin-top: 0.3rem;
-}
-
-/* ── Task table ──────────────────────────────────── */
-.task-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.88rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-}
-.task-table th {
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  border-bottom: 2px solid var(--ink);
-  padding: 0.6em 0.8em;
-  text-align: left;
-}
-.task-table td {
-  padding: 0.65em 0.8em;
-  border-bottom: 1px solid var(--rule);
-  vertical-align: top;
-}
-.task-table tr:last-child td { border-bottom: none; }
-.task-table td:first-child {
-  font-family: var(--mono);
-  font-weight: 600;
-  font-size: 0.8rem;
-  white-space: nowrap;
-}
-
 /* ── Author cards ────────────────────────────────── */
+.authors-section full { grid-column: 1 / -1; }
 .author-list {
   display: flex;
   flex-wrap: wrap;
