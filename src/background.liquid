@@ -20,8 +20,8 @@ permalink: /background/
     </p>
     <p>
       The benchmark procedurally generates seed-indexed scientific repositories,
-      each with realistic file-system structure, tabular data, and verifiable
-      question-answer tasks. It includes both answerable and unanswerable
+      each with realistic file-system structure, tabular data, and a verifiable
+      question-answer task. It includes both answerable and unanswerable
       questions spanning repository metadata, file metadata, directory traversal,
       univariate statistics, bivariate statistics, and hypothesis testing.
     </p>
@@ -32,6 +32,30 @@ permalink: /background/
       reasoning, abstention, and tool use at effectively unbounded scale, without
       distributing a large static corpus.
     </p>
+  </div>
+
+  <div class="about-section full">
+    <p class="section-label">Method</p>
+    <h2>From Random Seeds to Scientific Repositories</h2>
+    <div class="diagram">
+      <img id="diagram" src="/assets/diagram.png" alt="diagram">
+      <p class="diagram-description">
+        Data repositories are generated in a top-down manner.
+        1) <b>Scientific Context</b>: A field, domain, and subdomain are randomly sampled from a hierarchical taxonomy.
+        2) <b>Project Specification</b>: A project title, description (containing a plan, hypotheses, variables, and confounders) and abstract are generated with the LLM, conditioned on the scientific context.
+        3) <b>Directory Structure</b>: The project specification is used to create a plausible directory structure, describing variables in the folder- and file-names.
+        4) <b>File Structure</b>: Finally, conditioned on all prior information, independent and dependent variables are generated using named distributions and functions of other variables, respectively.
+        The right side shows one such instantiation, corresponding to seed 118.
+      </p>
+    </div>
+    <p>
+      
+    </p>
+  </div>
+
+  <div class="about-section full">
+    <p class="section-label">Example</p>
+    <h2>What does repository with seed=1 look like?</h2>
   </div>
 
   <!-- ── Citation ─────────────────────────────────── -->

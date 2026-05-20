@@ -458,3 +458,11 @@ footer {
   flex-wrap: wrap;
   gap: 0.4rem;
 }
+
+.diagram {
+  display: block;
+  text-align: center;
+}
+#diagram {
+  width: 75%;
+}
