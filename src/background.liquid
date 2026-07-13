@@ -4,71 +4,72 @@ title: InfiniteScienceGym
 footer:
   organization: InfiniteScienceGym
   year: 2026
-  updated: May 2026
+  updated: July 2026
 permalink: /background/
 ---
 
-<div class="about-grid">
-  <div class="about-section full">
-    <p class="section-label">Overview</p>
-    <h2>What is InfiniteScienceGym?</h2>
-    <p>
-      InfiniteScienceGym (ISG) is a benchmark for evaluating large language models as
-      scientific assistants on repository-grounded empirical data reasoning, 
-      introduced in our paper <a href="https://arxiv.org/abs/2604.13201" target="_blank"><em>"InfiniteScienceGym: An Unbounded, 
-      Procedurally-Generated Benchmark for Scientific Analysis"</em></a>.
-    </p>
-    <p>
-      The benchmark procedurally generates seed-indexed scientific repositories,
-      each with realistic file-system structure, tabular data, and a verifiable
-      question-answer task. It includes both answerable and unanswerable
-      questions spanning repository metadata, file metadata, directory traversal,
-      univariate statistics, bivariate statistics, and hypothesis testing.
-    </p>
-    <p>
-      Unlike prior benchmarks built only from published studies or fixed datasets,
-      InfiniteScienceGym is generated on demand and comes with exact ground truth
-      by construction. This makes it possible to evaluate evidence-grounded
-      reasoning, abstention, and tool use at effectively unbounded scale, without
-      distributing a large static corpus.
-    </p>
-  </div>
+<h2 class="section-title">What is InfiniteScienceGym?</h2>
+<p>
+  InfiniteScienceGym (ISG) is a benchmark for evaluating large language models as scientific assistants on repository-grounded empirical data reasoning, introduced in our paper
+  <a href="https://arxiv.org/abs/2604.13201" target="_blank">
+    <em>InfiniteScienceGym: An Unbounded, Procedurally-Generated Benchmark for Scientific Analysis</em>
+  </a>.
+</p>
+<p>
+  The benchmark procedurally generates seed-indexed scientific repositories, each with a realistic file-system structure, tabular data, and a verifiable question-answer task.                           
+  It includes both answerable and unanswerable questions spanning repository metadata, file metadata, directory traversal, univariate statistics, bivariate statistics, and hypothesis testing.
+</p>
+<p>
+  Unlike prior benchmarks built only from published studies or fixed datasets, InfiniteScienceGym is generated on demand and comes with exact ground truth by construction.                       
+  This makes it possible to evaluate evidence-grounded reasoning, abstention, and tool use at effectively unbounded scale, without distributing a large static corpus.
+</p>
 
-  <div class="about-section full">
-    <p class="section-label">Method</p>
-    <h2>From Random Seeds to Scientific Repositories</h2>
-    <div class="diagram">
-      <img id="diagram" src="/assets/diagram.png" alt="diagram">
-      <p class="diagram-description">
-        Data repositories are generated in a top-down manner.
-        1) <b>Scientific Context</b>: A field, domain, and subdomain are randomly sampled from a hierarchical taxonomy.
-        2) <b>Project Specification</b>: A project title, description (containing a plan, hypotheses, variables, and confounders) and abstract are generated with the LLM, conditioned on the scientific context.
-        3) <b>Directory Structure</b>: The project specification is used to create a plausible directory structure, describing variables in the folder- and file-names.
-        4) <b>File Structure</b>: Finally, conditioned on all prior information, independent and dependent variables are generated using named distributions and functions of other variables, respectively.
-        The right side shows one such instantiation, corresponding to seed 118.
-      </p>
-    </div>
-    <p>
-      
-    </p>
-  </div>
-
-  <div class="about-section full">
-    <p class="section-label">Example</p>
-    <h2>What does repository with seed=1 look like?</h2>
-  </div>
-
-  <!-- ── Citation ─────────────────────────────────── -->
-  <div class="about-section full">
-    <p class="section-label">Cite this benchmark</p>
-  <div class="citation-box">@misc{bentham2026infinitesciencegym,
-  title={InfiniteScienceGym: An Unbounded, Procedurally-Generated Benchmark for Scientific Analysis}, 
-  author={Oliver Bentham and Vivek Srikumar},
-  year={2026},
-  eprint={2604.13201},
-  archivePrefix={arXiv},
-  primaryClass={cs.CL},
-  url={https://arxiv.org/abs/2604.13201}, 
-}</div>
-
+<h2 class="section-title">From Random Seeds to Scientific Repositories</h2>
+<div class="diagram">
+  <img
+    id="diagram"
+    src="/assets/diagram.png"
+    alt="diagram">
+  <p class="diagram-description">
+    <b>Figure 1:</b>
+    Repository metadata is created in a top-down manner: 1) a scientific context is sampled from a taxonomy, 2) an LLM generates a specific project's specification, 3) the project's directory structure and file structure are procedurally generated from the project's independent, dependent, and other variables.                   
+    The right side shows the metadata corresponding to repository #118.
+  </p>
 </div>
+<p>
+  Every repository begins with a random integer seed.                           
+  Repository #1 has the random seed 1, repository #2 has the random seed 2, and so on.
+  Given the random seed, we first sample a field, domain, and subdomain from a
+  <a href="https://github.com/utahnlp/infinite-science-gym/tree/main/taxonomy" target="_blank">taxonomy of scientific areas</a>.                      
+  Next, we sample a specific project idea, defined by a title, description and abstract, from an LLM, conditioned on the scientific context. 
+  Figure 1 above shows this workflow.
+</p>
+<p>
+  From the instantiated project, we then build out a plausible directory structure and file schema from the independent, dependent, and other variables relevant to the project.                      
+  All independent variables are defined either as a distribution over a set of choices (categorical) or as a named, parameterized distribution, such as a Gaussian or Binomial distribution (continuous). 
+  All dependent variables are defined as a Python function of the independent variables, with some added random noise. 
+  The generating LLM is used to determine all the necessary metadata for the repository's variables.
+</p>
+<p>
+  With all the necessary metadata defined, we can now confirm whether any path is valid for a given repository, as well as generating the contents of a specific file on-the-fly.                     
+  To do this, we hash the file's path into an integer value, and then use that value to set the random seed.
+  From there, we simply sample the independent variables and use their values to calculated the dependent variables' values via their Python functions.
+</p>
+
+<h2 class="section-title">QA Task</h2>
+<p>
+  Given a system that produces repositories, we use this setup to evaluate LLMs' abilities to answer the types of questions a scientist might ask about their data.              
+  Crucially, by simulating the scientific data, we have access to the ground truth process that creates the data, and can therefore ask questions that are unsanswerable by construction, such as:
+</p>
+
+<pre class="code-block"><code>For the experimental runs with a coupling strength of zero and a trial number of one, and considering only the measurement points where the time to amplitude death is no greater than 269.3 seconds and the phase coherence is at least 0.01655 radians, what is the variance of the phase coherence across those points?
+</code></pre>
+
+<p>
+  This question is unanswerable because, after performing the required filtering on experimental results, there isn't actually any data left to calculate the variance from.     
+  For other questions this unswerability can come from requesting a continuous metric (e.g. average, variance, etc.) about a non-numeric, categorical variables. 
+  In other questions, the unsanswerability may relate to a technicality, like trying to calculate the Pearson's coefficient coefficient on a single data point (at least two points are needed to perform a linear regression).
+  Refer to the paper for more details about our operational definition of unanswerability.
+</p>
+
+{% comment %} <h2 class="section-title">What does repository with seed=1 look like?</h2> {% endcomment %}

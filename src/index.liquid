@@ -4,14 +4,10 @@ title: InfiniteScienceGym
 footer:
   organization: InfiniteScienceGym
   year: 2026
-  updated: May 2026
+  updated: July 2026
 ---
 
-<h2>Model Rankings</h2>
-<p class="section-intro">
-  Click any column header to sort.
-   See the <a href="/about/">About page</a> for evaluation details.
-</p>
+<h2 class="section-title">Leaderboard</h2>
 
 <div id="leaderboard-wrap">
   <table id="leaderboard" class="display">
@@ -39,7 +35,7 @@ footer:
             target="_blank">GPT-5.4</a>
           <span class="model-org">OpenAI</span>
         <td>
-          <span class="tag closed">Closed</span>
+          <span class="tag closed">API</span>
         </td>
         <td class="score-main">44.8</td>
         <td class="score">82.1</td>
@@ -59,7 +55,7 @@ footer:
           {% comment %} <a class="model-link" href="#" target="_blank">paper ↗</a> {% endcomment %}
         </td>
         <td>
-          <span class="tag closed">Closed</span>
+          <span class="tag closed">API</span>
         </td>
         <td class="score-main">35.5</td>
         <td class="score">80.4</td>
@@ -136,29 +132,13 @@ footer:
       <span class="tag open">Open</span>
       Open weights</span>
     <span class="legend-item">
-      <span class="tag closed">Closed</span>
+      <span class="tag closed">API</span>
       Proprietary / closed weights</span>
   </div>
   <div class="legend-justify">
     <span class="legend-item">↑ Higher is better</span>
     <span class="legend-item">↓ Lower is better</span>
   </div>
-</div>
-
-<div class="about-grid">
-
-<div class="authors-section full">
-<h2>Authors</h2>
-<div class="author-list">
-  {% for author in authors %}
-  <div class="author-card">
-    <strong>{{ author.name }}</strong>
-    <span>{{ author.institution }}</span>
-    &emsp;<a href="{{ author.website }}" target="_blank">website ↗</a>
-  </div>
-  {% endfor %}
-</div>
-</div>
 </div>
 
 <script>
