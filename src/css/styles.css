@@ -68,28 +68,32 @@ h1 em {
 
 .nav-paper-row {
   display: flex;
-  /* align-items: center; */
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 /* ── Nav ───────────────────────────────────────────────────── */
 nav {
-  margin-top: 1rem;
   display: flex;
-  gap: 0.2rem;
+  margin-top: 0.5rem;
+  gap: 0.3rem;
 }
 nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--paper);
   background: var(--ink);
   padding: 0.35em 0.9em;
   border: 1px solid var(--ink);
-  transition: background 0.15s, color 0.15s;
+  border-radius: 2px;
+  line-height: 1.8;
 }
 nav a:hover, nav a.active {
   background: var(--accent);
@@ -99,26 +103,26 @@ nav a.active { pointer-events: none; }
 
 /* ── Paper links (arXiv / GitHub) ──────────────────────────── */
 .paper-links {
-  margin-top: 1.1rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  align-items: center;
+  margin-top: 0.5rem;
+  gap: 0.3rem;
 }
 .paper-links a {
   display: inline-flex;
   align-items: center;
-  gap: 0.4em;
+  justify-content: center;
+  gap: 0.7em;
   font-family: var(--mono);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--accent);
   border: 1px solid var(--accent-dim);
-  padding: 0.25em 0.75em;
+  padding: 0.35em 0.9em;
   border-radius: 2px;
-  transition: background 0.15s;
+  line-height: 1.8;
 }
 .paper-links a:hover { background: var(--accent-dim); }
 .paper-links a svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
