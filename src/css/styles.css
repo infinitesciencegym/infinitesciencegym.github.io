@@ -2,10 +2,11 @@
 :root {
   --ink:        #1a1612;
   --ink-light:  #5a5047;
-  --paper:      #faf8f4;
+  /* --paper:      #faf8f4; */
+  --paper:      #ffffff;
   --rule:       #e2ddd6;
   --accent:     #962922;
-  --accent-dim: #e8c9c6;
+  --accent-dim: #ffffff;
   --gold:       #a07840;
   --mono:       'JetBrains Mono', monospace;
   --serif:      'Source Serif 4', serif;
@@ -447,6 +448,13 @@ footer {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.4rem;
+}
+
+video {
+  display: block;
+  margin: 1em auto;
+  /* padding: 1em 0; */
+  width: min(60%, 900px);
 }
 
 .diagram {
