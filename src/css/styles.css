@@ -4,9 +4,10 @@
   --ink-light:  #5a5047;
   /* --paper:      #faf8f4; */
   --paper:      #ffffff;
+  --manila:     #faf8f4;
   --rule:       #e2ddd6;
   --accent:     #962922;
-  --accent-dim: #ffffff;
+  --accent-dim: #e2ddd6;
   --gold:       #a07840;
   --mono:       'JetBrains Mono', monospace;
   --serif:      'Source Serif 4', serif;
@@ -339,7 +340,7 @@ div.dataTables_wrapper { padding: 1.2rem 1.2rem 1rem; }
 .citation-box {
   /* margin-top: 3.5rem; */
   border-left: 3px solid var(--accent);
-  background: #fff;
+  background: var(--manila);
   padding: 1.1rem 1.4rem;
   font-family: var(--mono);
   font-size: 0.75rem;
@@ -360,9 +361,9 @@ div.dataTables_wrapper { padding: 1.2rem 1.2rem 1rem; }
 .code-block {
   margin: 1rem 0 1.5rem;
   padding: 1rem 1.2rem;
-  border: 1px solid var(--rule);
+  /* border: 1px solid var(--rule); */
   border-left: 3px solid var(--accent);
-  background: #fff;
+  background: var(--manila);
   overflow-x: auto;
 }
 .code-block code {
@@ -453,8 +454,13 @@ footer {
 video {
   display: block;
   margin: 1em auto;
-  /* padding: 1em 0; */
-  width: min(60%, 900px);
+  width: min(60%, 100%);
+}
+
+@media (max-width: 720px) {
+  video {
+    width: 100%;
+  }
 }
 
 .diagram {
